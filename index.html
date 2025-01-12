@@ -1,0 +1,720 @@
+<html><head><base href="unused">
+  <meta charset="UTF-8">
+  <title>&#x645;&#x631;&#x62d;&#x628;&#x627; &#x628;&#x627;&#x644;&#x62c;&#x645;&#x64a;&#x639; &#x641;&#x64a; &#x642;&#x646;&#x627;&#x629; tf3l &#x648; foxxmodz3 &#x62c;&#x62f;&#x64a;&#x62f;&#x629;!</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #4527a0, #1a237e, #311b92, #6200ea);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: 80px;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 35px;
+      border-radius: 30px;
+      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5),
+                  inset 0 0 45px rgba(255, 255, 255, 0.15);
+      max-width: 600px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    h1 {
+      color: #FFD700;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5),
+                   2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin-bottom: 40px;
+      font-size: 2.5em;
+      letter-spacing: 2px;
+    }
+
+    .code-display {
+      font-size: 28px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 20px;
+      margin: 30px 0;
+      letter-spacing: 4px;
+      min-height: 70px;
+      font-family: 'Courier New', monospace;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .button-container {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      background: linear-gradient(45deg, #FF6B6B, #FF4757);
+      border: none;
+      padding: 15px 30px;
+      font-size: 18px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(45deg, #FF4757, #FF6B6B);
+    }
+
+    button:active {
+      transform: translateY(1px);
+    }
+
+    .copy-btn {
+      background: linear-gradient(45deg, #5352ed, #3742fa);
+    }
+
+    .share-btn {
+      background: linear-gradient(45deg, #2ed573, #7bed9f);
+    }
+
+    .copy-btn:hover, .share-btn:hover {
+      background: linear-gradient(45deg, #3742fa, #5352ed);
+    }
+
+    .copy-btn:hover {
+      background: linear-gradient(45deg, #3742fa, #5352ed);
+    }
+
+    .share-btn:hover {
+      background: linear-gradient(45deg, #7bed9f, #2ed573);
+    }
+
+    .animation {
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.8; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(45deg, #6200ea, #4527a0);
+      color: white;
+      padding: 18px 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: all 0.3s ease;
+      font-size: 18px;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast-icon {
+      font-size: 20px;
+    }
+
+    .channel-links {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .channel-btn {
+      background: linear-gradient(45deg, #FF6B6B, #FF4757);
+      color: white;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .channel-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(45deg, #FF4757, #FF6B6B);
+    }
+
+    .channel-btn.subscribed {
+      background: linear-gradient(45deg, #2ed573, #7bed9f);
+    }
+
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 1000;
+      transition: opacity 0.5s ease;
+    }
+
+    .subscribe-message {
+      color: white;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .nav-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(69, 39, 160, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 15px;
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+      z-index: 1001;
+      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-link {
+      color: white;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      background: rgba(255, 255, 255, 0.1);
+      font-size: 14px;
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .nav-link.active {
+      background: linear-gradient(45deg, #FF6B6B, #FF4757);
+      color: white;
+    }
+
+    .nav-icon {
+      font-size: 24px;
+      margin-bottom: 2px;
+    }
+
+    #comments-section {
+      display: none;
+      width: 90%;
+      max-width: 600px;
+      margin-top: 80px;
+    }
+
+    .comment-box {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px;
+      border-radius: 20px;
+      margin-bottom: 25px;
+    }
+
+    .comment-input {
+      width: 100%;
+      padding: 15px;
+      border-radius: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(98, 0, 234, 0.15);
+      color: white;
+      margin-bottom: 10px;
+      resize: vertical;
+      font-size: 14px;
+      min-height: 80px;
+    }
+
+    .comment-input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .comments-list {
+      margin-top: 20px;
+    }
+
+    .comment {
+      background: rgba(98, 0, 234, 0.15);
+      padding: 20px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      text-align: right;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .admin-controls {
+      margin-top: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+
+    .admin-btn {
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+
+    .delete-btn {
+      background: #ff4444;
+      color: white;
+    }
+
+    .ban-btn {
+      background: #9f0000;
+      color: white;
+    }
+
+    .admin-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+    /* Add new admin-specific styles */
+    .admin-theme {
+      background: linear-gradient(135deg, #800000, #4a0000, #2d0000, #1a0000) !important;
+    }
+
+    .admin-container {
+      border: 2px solid #ff4444 !important;
+      box-shadow: 0 0 20px rgba(255, 68, 68, 0.3) !important;
+    }
+
+    .admin-heading {
+      color: #ff4444 !important;
+      text-shadow: 0 0 15px rgba(255, 68, 68, 0.5) !important;
+    }
+
+    .admin-badge {
+      background: #ff4444;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav-bar">
+    <a href="#" class="nav-link active" onclick="showSection(&apos;main&apos;)">
+      <span class="nav-icon">&#x1f3e0;</span>
+      <span>&#x627;&#x644;&#x631;&#x626;&#x64a;&#x633;&#x64a;&#x629;</span>
+    </a>
+    <a href="#" class="nav-link" onclick="showSection(&apos;comments&apos;)">
+      <span class="nav-icon">&#x1f4ac;</span>
+      <span>&#x627;&#x644;&#x62a;&#x639;&#x644;&#x64a;&#x642;&#x627;&#x62a;</span>
+    </a>
+    <a href="#" class="nav-link" id="loginNav" onclick="showSection(&apos;login&apos;)">
+      <span class="nav-icon">&#x1f464;</span>
+      <span>&#x62a;&#x633;&#x62c;&#x64a;&#x644; &#x627;&#x644;&#x62f;&#x62e;&#x648;&#x644;</span>
+    </a>
+    <a href="#" class="nav-link" id="logoutNav" onclick="logout()" style="display: none;">
+      <span class="nav-icon">&#x1f6aa;</span>
+      <span>&#x62a;&#x633;&#x62c;&#x64a;&#x644; &#x627;&#x644;&#x62e;&#x631;&#x648;&#x62c;</span>
+    </a>
+  </nav>
+
+  <div id="overlay">
+    <div class="subscribe-message">&#x645;&#x631;&#x62d;&#x628;&#x627; &#x628;&#x627;&#x644;&#x62c;&#x645;&#x64a;&#x639; &#x641;&#x64a; &#x642;&#x646;&#x627;&#x629; tf3l &#x648; foxxmodz3 &#x62c;&#x62f;&#x64a;&#x62f;&#x629;! &#x64a;&#x631;&#x62c;&#x649; &#x627;&#x644;&#x627;&#x634;&#x62a;&#x631;&#x627;&#x643; &#x641;&#x64a; &#x627;&#x644;&#x642;&#x646;&#x627;&#x62a;&#x64a;&#x646; &#x648; &#x62a;&#x641;&#x639;&#x64a;&#x644; &#x627;&#x644;&#x62c;&#x631;&#x633; &#x644;&#x644;&#x627;&#x633;&#x62a;&#x645;&#x62a;&#x627;&#x639; &#x628;&#x645;&#x62d;&#x62a;&#x648;&#x649; &#x62c;&#x62f;&#x64a;&#x62f;!</div>
+    <div class="channel-links">
+      <a href="https://youtube.com/@tf3l?si=NQFFi4e0NC9Tfsa6" target="_blank" class="channel-btn" id="channel1">&#x627;&#x634;&#x62a;&#x631;&#x627;&#x643; &#x641;&#x64a; tf3l</a>
+      <a href="https://youtube.com/@foxxmodz3?si=WVOxNd7cRkLcSblV" target="_blank" class="channel-btn" id="channel2">&#x627;&#x634;&#x62a;&#x631;&#x627;&#x643; &#x641;&#x64a; foxxmodz3</a>
+    </div>
+  </div>
+
+  <div id="main-section" class="container">
+    <h1>&#x645;&#x631;&#x62d;&#x628;&#x627; &#x628;&#x627;&#x644;&#x62c;&#x645;&#x64a;&#x639; &#x641;&#x64a; &#x642;&#x646;&#x627;&#x629; tf3l &#x648; foxxmodz3 &#x62c;&#x62f;&#x64a;&#x62f;&#x629;! &#x64a;&#x631;&#x62c;&#x649; &#x627;&#x644;&#x627;&#x634;&#x62a;&#x631;&#x627;&#x643; &#x641;&#x64a; &#x627;&#x644;&#x642;&#x646;&#x627;&#x62a;&#x64a;&#x646; &#x648; &#x62a;&#x641;&#x639;&#x64a;&#x644; &#x627;&#x644;&#x62c;&#x631;&#x633; &#x644;&#x644;&#x627;&#x633;&#x62a;&#x645;&#x62a;&#x627;&#x639; &#x628;&#x645;&#x62d;&#x62a;&#x648;&#x649; &#x62c;&#x62f;&#x64a;&#x62f;!</h1>
+    <div class="code-display" id="codeDisplay">&#x62c;&#x627;&#x631;&#x64a; &#x62a;&#x62d;&#x645;&#x64a;&#x644; &#x627;&#x644;&#x634;&#x641;&#x631;&#x629;...&#xff0c;&#x8bf7; &#x627;&#x646;&#x62a;&#x638;&#x631;...</div>
+    <div class="button-container">
+      <button onclick="generateCode()" class="animation">&#x625;&#x639;&#x627;&#x62f;&#x629; &#x62a;&#x62d;&#x645;&#x64a;&#x644; &#x627;&#x644;&#x634;&#x641;&#x631;&#x629;</button>
+      <button onclick="copyCode()" class="copy-btn">&#x646;&#x633;&#x62e; &#x627;&#x644;&#x634;&#x641;&#x631;&#x629;</button>
+      <button onclick="shareWebsite()" class="share-btn">&#x645;&#x634;&#x627;&#x631;&#x643;&#x629; &#x627;&#x644;&#x645;&#x648;&#x642;&#x639;</button>
+    </div>
+  </div>
+
+  <div id="login-section" class="container" style="display: none;">
+    <h2>&#x62a;&#x633;&#x62c;&#x64a;&#x644; &#x627;&#x644;&#x62f;&#x62e;&#x648;&#x644;</h2>
+    <input type="text" id="usernameInput" placeholder="&#x627;&#x633;&#x645; &#x627;&#x644;&#x645;&#x633;&#x62a;&#x62e;&#x62f;&#x645;" class="comment-input">
+    <input type="password" id="passwordInput" placeholder="&#x643;&#x644;&#x645;&#x629; &#x627;&#x644;&#x645;&#x631;&#x648;&#x631;" class="comment-input">
+    <div class="button-container">
+      <button onclick="login()" class="copy-btn">&#x62a;&#x633;&#x62c;&#x64a;&#x644; &#x627;&#x644;&#x62f;&#x62e;&#x648;&#x644;</button>
+      <button onclick="showRegister()" class="share-btn">&#x62a;&#x633;&#x62c;&#x64a;&#x644; &#x62d;&#x633;&#x627;&#x628; &#x62c;&#x62f;&#x64a;&#x62f;</button>
+    </div>
+  </div>
+
+  <div id="register-section" class="container" style="display: none;">
+    <h2>&#x62a;&#x633;&#x62c;&#x64a;&#x644; &#x62d;&#x633;&#x627;&#x628; &#x62c;&#x62f;&#x64a;&#x62f;</h2>
+    <input type="text" id="newUsernameInput" placeholder="&#x627;&#x633;&#x645; &#x627;&#x644;&#x645;&#x633;&#x62a;&#x62e;&#x62f;&#x645;" class="comment-input">
+    <input type="password" id="newPasswordInput" placeholder="&#x643;&#x644;&#x645;&#x629; &#x627;&#x644;&#x645;&#x631;&#x648;&#x631;" class="comment-input">
+    <div class="button-container">
+      <button onclick="register()" class="copy-btn">&#x62a;&#x633;&#x62c;&#x64a;&#x644; &#x62d;&#x633;&#x627;&#x628; &#x62c;&#x62f;&#x64a;&#x62f;</button>
+      <button onclick="showLogin()" class="share-btn">&#x627;&#x644;&#x631;&#x62c;&#x648;&#x639; &#x627;&#x644;&#x649; &#x62a;&#x633;&#x62c;&#x64a;&#x644; &#x627;&#x644;&#x62f;&#x62e;&#x648;&#x644;</button>
+    </div>
+  </div>
+
+  <div id="comments-section">
+    <div class="comment-box">
+      <textarea class="comment-input" placeholder="&#x627;&#x643;&#x62a;&#x628; &#x62a;&#x639;&#x644;&#x64a;&#x642;..." id="commentInput"></textarea>
+      <button onclick="addComment()" class="copy-btn">&#x625;&#x636;&#x627;&#x641;&#x629; &#x62a;&#x639;&#x644;&#x64a;&#x642;</button>
+    </div>
+    <div class="comments-list" id="commentsList">
+      <!-- Comments will be added here dynamically -->
+    </div>
+  </div>
+
+  <div id="toast" class="toast">
+    <span class="toast-icon">&#x2714;&#xfe0f;</span>
+    <span id="toastMessage">&#x62a;&#x645; &#x627;&#x644;&#x646;&#x633;&#x62e; &#x628;&#x646;&#x62c;&#x627;&#x62d;! &#x1f44d;</span>
+  </div>
+
+  <script>let channelClicks = {
+  channel1: localStorage.getItem('channel1') === 'true' || false,
+  channel2: localStorage.getItem('channel2') === 'true' || false
+};
+if (channelClicks.channel1) {}
+if (channelClicks.channel2) {}
+if (channelClicks.channel1 && channelClicks.channel2) {}
+let currentUser = null;
+const ADMIN_USERNAME = "ADEMIN";
+const ADMIN_PASSWORD = "ADEMIN999";
+let isAdmin = localStorage.getItem('isAdmin') === 'true';
+function showLogin() {
+  document.getElementById('login-section').style.display = 'block';
+  document.getElementById('register-section').style.display = 'none';
+}
+function showRegister() {
+  document.getElementById('login-section').style.display = 'none';
+  document.getElementById('register-section').style.display = 'block';
+}
+function login() {
+  const username = document.getElementById('usernameInput').value;
+  const password = document.getElementById('passwordInput').value;
+  if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+    currentUser = username;
+    isAdmin = true;
+    localStorage.setItem('currentUser', username);
+    localStorage.setItem('isAdmin', true);
+    showToast('تم تسجيل الدخول كمشرف!');
+    updateLoginUI();
+    showSection('comments');
+    return;
+  }
+  const users = JSON.parse(localStorage.getItem('users') || '[]');
+  const user = users.find(u => u.username === username && u.password === password);
+  if (user) {
+    currentUser = username;
+    isAdmin = false;
+    localStorage.setItem('currentUser', username);
+    localStorage.setItem('isAdmin', false);
+    showToast('تم تسجيل الدخول بنجاح!');
+    updateLoginUI();
+    showSection('comments');
+  } else {
+    showToast('خطأ في اسم المستخدم أو كلمة المرور');
+  }
+}
+function register() {
+  const username = document.getElementById('newUsernameInput').value;
+  const password = document.getElementById('newPasswordInput').value;
+  if (!username || !password) {
+    showToast('الرجاء إدخال جميع البيانات');
+    return;
+  }
+  const users = JSON.parse(localStorage.getItem('users') || '[]');
+  if (users.some(u => u.username === username)) {
+    showToast('اسم المستخدم موجود بالفعل');
+    return;
+  }
+  users.push({
+    username,
+    password
+  });
+  localStorage.setItem('users', JSON.stringify(users));
+  showToast('تم إنشاء الحساب بنجاح');
+  showLogin();
+}
+function logout() {
+  currentUser = null;
+  isAdmin = false;
+  localStorage.removeItem('currentUser');
+  localStorage.removeItem('isAdmin');
+  updateLoginUI();
+  showSection('main');
+}
+function updateLoginUI() {
+  const isLoggedIn = currentUser !== null;
+  document.getElementById('loginNav').style.display = isLoggedIn ? 'none' : 'block';
+  document.getElementById('logoutNav').style.display = isLoggedIn ? 'block' : 'none';
+  document.getElementById('login-section').style.display = 'none';
+  document.getElementById('register-section').style.display = 'none';
+
+  // Add admin styling
+  if (isAdmin) {
+    document.body.classList.add('admin-theme');
+    document.querySelectorAll('.container').forEach(container => {
+      container.classList.add('admin-container');
+    });
+    document.querySelectorAll('h1, h2').forEach(heading => {
+      heading.classList.add('admin-heading');
+    });
+    
+    // Add admin badge to username displays
+    document.querySelectorAll('.comment').forEach(comment => {
+      const text = comment.textContent;
+      if (text.includes(ADMIN_USERNAME) && !text.includes('🛡️ Admin')) {
+        comment.textContent = text + ' 🛡️ Admin';
+      }
+    });
+  } else {
+    document.body.classList.remove('admin-theme');
+    document.querySelectorAll('.container').forEach(container => {
+      container.classList.remove('admin-container');
+    });
+    document.querySelectorAll('h1, h2').forEach(heading => {
+      heading.classList.remove('admin-heading');
+    });
+  }
+}
+function showToast(message) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMessage').textContent = message;
+  toast.classList.add('show');
+  setTimeout(() => {
+    toast.classList.remove('show');
+  }, 3000);
+}
+function copyCode() {
+  const code = document.getElementById('codeDisplay').textContent;
+  navigator.clipboard.writeText(code).then(() => {
+    showToast('تم نسخ الكود بنجاح!');
+  }).catch(err => {
+    console.error('فشل في نسخ الكود:', err);
+  });
+}
+function shareWebsite() {
+  const websiteUrl = window.location.href;
+  navigator.clipboard.writeText(websiteUrl).then(() => {
+    showToast('تم نسخ رابط الموقع بنجاح!');
+  }).catch(err => {
+    console.error('فشل في نسخ الرابط:', err);
+  });
+}
+function showSection(section) {
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.classList.remove('active');
+  });
+  document.querySelector(`.nav-link[onclick*="${section}"]`).classList.add('active');
+  document.getElementById('main-section').style.display = 'none';
+  document.getElementById('comments-section').style.display = 'none';
+  document.getElementById('login-section').style.display = 'none';
+  document.getElementById('register-section').style.display = 'none';
+  if (section === 'main') {
+    document.getElementById('main-section').style.display = 'block';
+  } else if (section === 'comments') {
+    if (currentUser) {
+      document.getElementById('comments-section').style.display = 'block';
+    } else {
+      document.getElementById('login-section').style.display = 'block';
+      showToast('الرجاء تسجيل الدخول أولاً');
+    }
+  } else if (section === 'login') {
+    document.getElementById('login-section').style.display = 'block';
+  }
+}
+function addComment() {
+  if (!currentUser) {
+    showToast('الرجاء تسجيل الدخول لإضافة تعليق');
+    showSection('login');
+    return;
+  }
+  const commentInput = document.getElementById('commentInput');
+  const commentText = commentInput.value.trim();
+  if (commentText) {
+    const commentsList = document.getElementById('commentsList');
+    const commentData = {
+      id: Date.now(),
+      text: commentText,
+      user: currentUser,
+      timestamp: new Date().toISOString(),
+      isAdmin: isAdmin
+    };
+    const commentElement = document.createElement('div');
+    commentElement.className = 'comment';
+    commentElement.dataset.id = commentData.id;
+    commentElement.textContent = `${commentData.text} - ${currentUser}${isAdmin ? ' 🛡️ Admin' : ''}`;
+    
+    if (isAdmin) {
+      commentElement.style.background = 'rgba(255, 68, 68, 0.15)';
+      commentElement.style.border = '1px solid rgba(255, 68, 68, 0.3)';
+    }
+
+    if (isAdmin) {
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = '❌ حذف';
+      deleteBtn.className = 'admin-btn delete-btn';
+      deleteBtn.onclick = () => deleteComment(commentData.id);
+      const banBtn = document.createElement('button');
+      banBtn.textContent = '🚫 حظر المستخدم';
+      banBtn.className = 'admin-btn ban-btn';
+      banBtn.onclick = () => banUser(commentData.user);
+      const controls = document.createElement('div');
+      controls.className = 'admin-controls';
+      controls.appendChild(deleteBtn);
+      controls.appendChild(banBtn);
+      commentElement.appendChild(controls);
+    }
+    commentsList.insertBefore(commentElement, commentsList.firstChild);
+    commentInput.value = '';
+    const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+    comments.unshift(commentData);
+    localStorage.setItem('comments', JSON.stringify(comments));
+  }
+}
+function loadComments() {
+  const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  const commentsList = document.getElementById('commentsList');
+  commentsList.innerHTML = '';
+  comments.forEach(comment => {
+    const commentElement = document.createElement('div');
+    commentElement.className = 'comment';
+    commentElement.dataset.id = comment.id;
+    commentElement.textContent = `${comment.text} - ${comment.user || 'مستخدم مجهول'}${comment.isAdmin ? ' 🛡️ Admin' : ''}`;
+    
+    if (comment.isAdmin) {
+      commentElement.style.background = 'rgba(255, 68, 68, 0.15)';
+      commentElement.style.border = '1px solid rgba(255, 68, 68, 0.3)';
+    }
+
+    if (isAdmin) {
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = '❌ حذف';
+      deleteBtn.className = 'admin-btn delete-btn';
+      deleteBtn.onclick = () => deleteComment(comment.id);
+      const banBtn = document.createElement('button');
+      banBtn.textContent = '🚫 حظر المستخدم';
+      banBtn.className = 'admin-btn ban-btn';
+      banBtn.onclick = () => banUser(comment.user);
+      const controls = document.createElement('div');
+      controls.className = 'admin-controls';
+      controls.appendChild(deleteBtn);
+      controls.appendChild(banBtn);
+      commentElement.appendChild(controls);
+    }
+    commentsList.appendChild(commentElement);
+  });
+}
+function deleteComment(commentId) {
+  if (!isAdmin) return;
+  const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+  const filteredComments = comments.filter(c => c.id !== commentId);
+  localStorage.setItem('comments', JSON.stringify(filteredComments));
+  document.querySelector(`[data-id="${commentId}"]`).remove();
+  showToast('تم حذف التعليق');
+}
+function banUser(username) {
+  if (!isAdmin) return;
+  const bannedUsers = JSON.parse(localStorage.getItem('bannedUsers') || '[]');
+  if (!bannedUsers.includes(username)) {
+    bannedUsers.push(username);
+    localStorage.setItem('bannedUsers', JSON.stringify(bannedUsers));
+    const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+    const filteredComments = comments.filter(c => c.user !== username);
+    localStorage.setItem('comments', JSON.stringify(filteredComments));
+    const commentsList = document.getElementById('commentsList');
+    commentsList.innerHTML = '';
+    loadComments();
+    showToast(`تم حظر المستخدم ${username}`);
+  }
+}
+function generateCode() {
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let code = '';
+  for (let i = 0; i < 12; i++) {
+    code += characters.charAt(Math.floor(Math.random() * characters.length));
+    if (i % 4 === 3 && i < 11) {
+      code += '-';
+    }
+  }
+  const codeDisplay = document.getElementById('codeDisplay');
+  codeDisplay.textContent = code;
+  codeDisplay.classList.add('animation');
+  setTimeout(() => {
+    codeDisplay.classList.remove('animation');
+  }, 2000);
+}
+function checkSubscriptions() {
+  if (channelClicks.channel1 && channelClicks.channel2) {
+    const overlay = document.getElementById('overlay');
+    overlay.style.opacity = '0';
+    setTimeout(() => {
+      overlay.style.display = 'none';
+    }, 500);
+  }
+}
+currentUser = localStorage.getItem('currentUser');
+updateLoginUI();
+document.getElementById('channel1').addEventListener('click', () => {
+  channelClicks.channel1 = true;
+  localStorage.setItem('channel1', 'true');
+  document.getElementById('channel1').classList.add('subscribed');
+  checkSubscriptions();
+});
+document.getElementById('channel2').addEventListener('click', () => {
+  channelClicks.channel2 = true;
+  localStorage.setItem('channel2', 'true');
+  document.getElementById('channel2').classList.add('subscribed');
+  checkSubscriptions();
+});
+loadComments();</script>
+</body>
+</html>
